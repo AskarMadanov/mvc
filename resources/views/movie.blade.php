@@ -10,6 +10,7 @@
     
         <p>Movie</p>
         <a href="{{ route('movie.add') }}" role="button" class="btn btn-success">Add movie</a>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -17,6 +18,7 @@
                     <th>Type</th>
                     <th>Image</th>
                     <th>link</th>
+                    <th>Actions</th>
 
                 </tr>
             </thead>
@@ -28,7 +30,12 @@
                 <td> {{ $movie->type}}</td>
                 <td> <img style="width:200px; height=200px" src='{{ $movie->img_src}}'></td>
                 <td> {{ $movie->link }}</td>
-                
+                <td><span style="font-size: 24px; color: red;">
+                    <i class="fas fa-trash"></i>
+                </span>
+                <span style="font-size: 24px; color: grey;">
+                    <i class="fas fa-edit"></i>
+                </span></td>
             </tr>
             @endforeach
             </tbody>
