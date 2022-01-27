@@ -25,12 +25,17 @@ Class AnimalController extends Controller {
     public function saveAnimal(Request $request){
         // dd($request->all());
         // dd($request->file('image_src'))->isValid();
+        
+        // Saving the data 
+
         $animal = Animals::create([
             'name' => $request->name,
             'type' => $request->type,
             'img_src' => '#',
             'link' => '#'
         ]);
+
+        // Saving the image 
         // dd($request->file('image_src')->isValid());
         if($request->hasFile('image_src')){
             $file= $request->file('image_src');
@@ -41,13 +46,18 @@ Class AnimalController extends Controller {
             catch (\Exception $e){
                 dd($e->getMessage());
             }
-            $animal->img_src = 'Images/'.$name;
+            $animal->img_src = '/storage/Images/'.$name;
             $animal->save();
             
         }
-       
+        // redirect to animals page 
         return redirect(route('animals'));
             
+    }
+
+    public function viewAnimal($id){
+        $animal = Animals::find($id);
+        return view('animal.show')->with('animal',$animal);
     }
     
 }
